@@ -3,10 +3,6 @@ GetUserAgent
 
 This project give you random user agent from known user agents.
 
-Requirements
-------------
-lxml
-
 Need to know:
 =============
 
@@ -35,5 +31,7 @@ print user_agents.next()
 Get in touch with me
 --------------------
 Gagandeep Singh
+
 gagan@aftercoupon.in
+
 http://www.aftercoupon.in
