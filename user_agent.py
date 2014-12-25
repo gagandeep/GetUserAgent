@@ -1,4 +1,4 @@
-from lxml import etree
+import xml.etree.ElementTree as ET
 import random
 
 windows_browsers = []
@@ -6,15 +6,16 @@ linux_browsers = []
 mac_browsers = []
 
 with open("useragentswitcher.xml") as xml:
-	tree = etree.parse(xml)
-	#print etree.tostring(tree.getroot())
-	windows_browsers = tree.xpath('//folder[@description="Browsers - Windows"]/useragent/@useragent')
-	mac_browsers = tree.xpath('//folder[@description="Browsers - Mac"]/useragent/@useragent')
-	linux_browsers = tree.xpath('//folder[@description="Browsers - Linux"]/useragent/@useragent')
+	tree = ET.parse(xml)
+	for browser in tree.findall('.//folder[@description="Browsers - Windows"]/useragent'):
+		windows_browsers.append(browser.attrib['useragent'])
+	for browser in tree.findall('.//folder[@description="Browsers - Mac"]/useragent'):
+		mac_browsers.append(browser.attrib['useragent'])
+	for browser in tree.findall('.//folder[@description="Browsers - Linux"]/useragent'):
+		linux_browsers.append(browser.attrib['useragent'])
 
 def get_user_agent():
 	rand = random.randint(1,12)
-	#print rand
 	if rand < 9:
 		browsers = windows_browsers
 	elif rand < 11:
