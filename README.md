@@ -28,10 +28,9 @@ print get_user_agent()
 
 
 ```
-print get_user_agent()
-```
 user_agents = gen_user_agent()
 print user_agents.next()
+```
 
 Get in touch with me
 --------------------
